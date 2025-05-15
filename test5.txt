@@ -1,0 +1,7 @@
+-- Bu bir açıklama satırıdır
+x <- 10
+y <- 20
+fonk topla a b:
+    dondur a + b
+
+z <- topla x y
