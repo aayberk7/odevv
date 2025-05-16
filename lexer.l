@@ -7,9 +7,6 @@
 int line_num = 1;
 %}
 
-
-
-
 /* Flex seçenekleri */
 %option noyywrap
 %option yylineno
@@ -60,24 +57,13 @@ TANIMLAYICI      [a-zA-Z_][a-zA-Z0-9_]*
                         free(yylval.string_value);
                         yylval.string_value = yeni_metin; }
 
-"aksi halde"          { return AKSI_HALDE; }
-"tus_basildi"         { return TUS_BASILDI; }
-"TUS_YUKARI"          { return TUS_YUKARI; }
-"TUS_ASAGI"           { return TUS_ASAGI; }
-"TUS_SOLA"            { return TUS_SOLA; }
-"TUS_SAGA"            { return TUS_SAGA; }
-"<>"                  { return ESIT_DEGIL; }
-"ise"                 { return ISE; }
-"iken"                { return IKEN; }
-":"                   { return ':'; }
 "eger"                { return EGER; }
 "degilse"             { return DEGILSE; }
-"dongu"               { return DONGU; }
-"neki"                { return NEKI; }
+"iken"                { return IKEN; }
+"son"                 { return SON; }
 "dogru"               { yylval.int_value = 1; return DOGRU; }
 "yanlis"              { yylval.int_value = 0; return YANLIS; }
-"fonk"                { return FONK; }
-"son"                 { return SON;}
+"fonksiyon"           { return FONKSIYON; }
 "dondur"              { return DONDUR; }
 
 "ve"                  { return VE; }
@@ -95,9 +81,9 @@ TANIMLAYICI      [a-zA-Z_][a-zA-Z0-9_]*
 "doldur"              { return DOLDUR; }
 "guncelle"            { return GUNCELLE; }
 
-"<-"                   { return ATAMA; }
-"+<-"                  { return ARTI_ATAMA; }
-"-<-"                  { return EKSI_ATAMA; }
+"←"                   { return ATAMA; }
+"+←"                  { return ARTI_ATAMA; }
+"-←"                  { return EKSI_ATAMA; }
 
 "+"                   { return '+'; }
 "-"                   { return '-'; }
@@ -117,8 +103,6 @@ TANIMLAYICI      [a-zA-Z_][a-zA-Z0-9_]*
 "("                   { return '('; }
 ")"                   { return ')'; }
 ","                   { return ','; }
-
-
 
 {SAYI_TAMSAYI}        { yylval.int_value = atoi(yytext); return TAMSAYI; }
 {SAYI_ONDALIK}        { yylval.double_value = atof(yytext); return ONDALIK; }

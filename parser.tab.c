@@ -69,16 +69,17 @@
 /* First part of user prologue.  */
 #line 1 "parser.y"
 
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-    extern int yylex();
-    extern int yyparse();
-    extern FILE *yyin;
-    void yyerror(const char *s);
+extern int yylex();
+extern int yyparse();
+extern FILE* yyin;
+void yyerror(const char* s);
+extern int line_num;
 
-#line 82 "parser.tab.c"
+#line 83 "parser.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -109,70 +110,75 @@ enum yysymbol_kind_t
   YYSYMBOL_YYEOF = 0,                      /* "end of file"  */
   YYSYMBOL_YYerror = 1,                    /* error  */
   YYSYMBOL_YYUNDEF = 2,                    /* "invalid token"  */
-  YYSYMBOL_METIN = 3,                      /* METIN  */
-  YYSYMBOL_AKSI_HALDE = 4,                 /* AKSI_HALDE  */
-  YYSYMBOL_DOGRU = 5,                      /* DOGRU  */
-  YYSYMBOL_YANLIS = 6,                     /* YANLIS  */
-  YYSYMBOL_SON = 7,                        /* SON  */
-  YYSYMBOL_ISE = 8,                        /* ISE  */
+  YYSYMBOL_TAMSAYI = 3,                    /* TAMSAYI  */
+  YYSYMBOL_ONDALIK = 4,                    /* ONDALIK  */
+  YYSYMBOL_METIN = 5,                      /* METIN  */
+  YYSYMBOL_TANIMLAYICI = 6,                /* TANIMLAYICI  */
+  YYSYMBOL_EGER = 7,                       /* EGER  */
+  YYSYMBOL_DEGILSE = 8,                    /* DEGILSE  */
   YYSYMBOL_IKEN = 9,                       /* IKEN  */
-  YYSYMBOL_TAMSAYI = 10,                   /* TAMSAYI  */
-  YYSYMBOL_ONDALIK = 11,                   /* ONDALIK  */
-  YYSYMBOL_TANIMLAYICI = 12,               /* TANIMLAYICI  */
-  YYSYMBOL_EGER = 13,                      /* EGER  */
-  YYSYMBOL_DEGILSE = 14,                   /* DEGILSE  */
-  YYSYMBOL_DONGU = 15,                     /* DONGU  */
-  YYSYMBOL_NEKI = 16,                      /* NEKI  */
-  YYSYMBOL_FONK = 17,                      /* FONK  */
-  YYSYMBOL_DONDUR = 18,                    /* DONDUR  */
-  YYSYMBOL_VE = 19,                        /* VE  */
-  YYSYMBOL_VEYA = 20,                      /* VEYA  */
-  YYSYMBOL_DEGIL = 21,                     /* DEGIL  */
-  YYSYMBOL_ESIT = 22,                      /* ESIT  */
-  YYSYMBOL_ESIT_DEGIL = 23,                /* ESIT_DEGIL  */
-  YYSYMBOL_KUCUK = 24,                     /* KUCUK  */
-  YYSYMBOL_BUYUK = 25,                     /* BUYUK  */
-  YYSYMBOL_KUCUK_ESIT = 26,                /* KUCUK_ESIT  */
-  YYSYMBOL_BUYUK_ESIT = 27,                /* BUYUK_ESIT  */
-  YYSYMBOL_ARTI_ATAMA = 28,                /* ARTI_ATAMA  */
-  YYSYMBOL_EKSI_ATAMA = 29,                /* EKSI_ATAMA  */
-  YYSYMBOL_ATAMA = 30,                     /* ATAMA  */
-  YYSYMBOL_EKRANA_YAZ = 31,                /* EKRANA_YAZ  */
-  YYSYMBOL_DEGER_GOSTER = 32,              /* DEGER_GOSTER  */
-  YYSYMBOL_EKRANI_TEMIZLE = 33,            /* EKRANI_TEMIZLE  */
-  YYSYMBOL_RENK_AYARLA = 34,               /* RENK_AYARLA  */
-  YYSYMBOL_KALINLIK_AYARLA = 35,           /* KALINLIK_AYARLA  */
-  YYSYMBOL_DIKDORTGEN_CIZ = 36,            /* DIKDORTGEN_CIZ  */
-  YYSYMBOL_DAIRE_CIZ = 37,                 /* DAIRE_CIZ  */
-  YYSYMBOL_UCGEN_CIZ = 38,                 /* UCGEN_CIZ  */
-  YYSYMBOL_DOLDUR = 39,                    /* DOLDUR  */
-  YYSYMBOL_GUNCELLE = 40,                  /* GUNCELLE  */
-  YYSYMBOL_TUS_BASILDI = 41,               /* TUS_BASILDI  */
-  YYSYMBOL_TUS_YUKARI = 42,                /* TUS_YUKARI  */
-  YYSYMBOL_TUS_ASAGI = 43,                 /* TUS_ASAGI  */
-  YYSYMBOL_TUS_SOLA = 44,                  /* TUS_SOLA  */
-  YYSYMBOL_TUS_SAGA = 45,                  /* TUS_SAGA  */
-  YYSYMBOL_46_ = 46,                       /* '+'  */
-  YYSYMBOL_47_ = 47,                       /* '-'  */
-  YYSYMBOL_48_ = 48,                       /* '*'  */
-  YYSYMBOL_49_ = 49,                       /* '/'  */
-  YYSYMBOL_50_ = 50,                       /* '%'  */
-  YYSYMBOL_51_ = 51,                       /* ':'  */
-  YYSYMBOL_52_ = 52,                       /* ','  */
-  YYSYMBOL_YYACCEPT = 53,                  /* $accept  */
-  YYSYMBOL_program = 54,                   /* program  */
-  YYSYMBOL_statement_list = 55,            /* statement_list  */
-  YYSYMBOL_statement = 56,                 /* statement  */
-  YYSYMBOL_tus_condition = 57,             /* tus_condition  */
-  YYSYMBOL_return_statement = 58,          /* return_statement  */
-  YYSYMBOL_assignment = 59,                /* assignment  */
-  YYSYMBOL_expression = 60,                /* expression  */
-  YYSYMBOL_condition = 61,                 /* condition  */
-  YYSYMBOL_loop = 62,                      /* loop  */
-  YYSYMBOL_function_def = 63,              /* function_def  */
-  YYSYMBOL_function_call = 64,             /* function_call  */
-  YYSYMBOL_expression_list = 65,           /* expression_list  */
-  YYSYMBOL_draw_command = 66               /* draw_command  */
+  YYSYMBOL_SON = 10,                       /* SON  */
+  YYSYMBOL_DOGRU = 11,                     /* DOGRU  */
+  YYSYMBOL_YANLIS = 12,                    /* YANLIS  */
+  YYSYMBOL_FONKSIYON = 13,                 /* FONKSIYON  */
+  YYSYMBOL_DONDUR = 14,                    /* DONDUR  */
+  YYSYMBOL_EKRANA_YAZ = 15,                /* EKRANA_YAZ  */
+  YYSYMBOL_DEGER_GOSTER = 16,              /* DEGER_GOSTER  */
+  YYSYMBOL_EKRANI_TEMIZLE = 17,            /* EKRANI_TEMIZLE  */
+  YYSYMBOL_RENK_AYARLA = 18,               /* RENK_AYARLA  */
+  YYSYMBOL_KALINLIK_AYARLA = 19,           /* KALINLIK_AYARLA  */
+  YYSYMBOL_DIKDORTGEN_CIZ = 20,            /* DIKDORTGEN_CIZ  */
+  YYSYMBOL_DAIRE_CIZ = 21,                 /* DAIRE_CIZ  */
+  YYSYMBOL_UCGEN_CIZ = 22,                 /* UCGEN_CIZ  */
+  YYSYMBOL_DOLDUR = 23,                    /* DOLDUR  */
+  YYSYMBOL_GUNCELLE = 24,                  /* GUNCELLE  */
+  YYSYMBOL_ATAMA = 25,                     /* "←"  */
+  YYSYMBOL_ARTI_ATAMA = 26,                /* "+←"  */
+  YYSYMBOL_EKSI_ATAMA = 27,                /* "-←"  */
+  YYSYMBOL_VE = 28,                        /* "ve"  */
+  YYSYMBOL_VEYA = 29,                      /* "veya"  */
+  YYSYMBOL_DEGIL = 30,                     /* "değil"  */
+  YYSYMBOL_ESIT = 31,                      /* "=="  */
+  YYSYMBOL_ESIT_DEGIL = 32,                /* "!="  */
+  YYSYMBOL_KUCUK = 33,                     /* "<"  */
+  YYSYMBOL_BUYUK = 34,                     /* ">"  */
+  YYSYMBOL_KUCUK_ESIT = 35,                /* "<="  */
+  YYSYMBOL_BUYUK_ESIT = 36,                /* ">="  */
+  YYSYMBOL_37_ = 37,                       /* '+'  */
+  YYSYMBOL_38_ = 38,                       /* '-'  */
+  YYSYMBOL_39_ = 39,                       /* '*'  */
+  YYSYMBOL_40_ = 40,                       /* '/'  */
+  YYSYMBOL_41_ = 41,                       /* '%'  */
+  YYSYMBOL_UMINUS = 42,                    /* UMINUS  */
+  YYSYMBOL_43_ = 43,                       /* '{'  */
+  YYSYMBOL_44_ = 44,                       /* '}'  */
+  YYSYMBOL_45_ = 45,                       /* '('  */
+  YYSYMBOL_46_ = 46,                       /* ')'  */
+  YYSYMBOL_47_ = 47,                       /* ','  */
+  YYSYMBOL_YYACCEPT = 48,                  /* $accept  */
+  YYSYMBOL_program = 49,                   /* program  */
+  YYSYMBOL_ifadeler = 50,                  /* ifadeler  */
+  YYSYMBOL_ifade = 51,                     /* ifade  */
+  YYSYMBOL_ifade_opt = 52,                 /* ifade_opt  */
+  YYSYMBOL_blok = 53,                      /* blok  */
+  YYSYMBOL_deyim = 54,                     /* deyim  */
+  YYSYMBOL_atama_deyimi = 55,              /* atama_deyimi  */
+  YYSYMBOL_dongu_deyimi = 56,              /* dongu_deyimi  */
+  YYSYMBOL_kosul_deyimi = 57,              /* kosul_deyimi  */
+  YYSYMBOL_fonksiyon_tanimi = 58,          /* fonksiyon_tanimi  */
+  YYSYMBOL_dondur_deyimi = 59,             /* dondur_deyimi  */
+  YYSYMBOL_opt_parametre_listesi = 60,     /* opt_parametre_listesi  */
+  YYSYMBOL_parametre_listesi = 61,         /* parametre_listesi  */
+  YYSYMBOL_fonksiyon_cagrisi = 62,         /* fonksiyon_cagrisi  */
+  YYSYMBOL_opt_arguman_listesi = 63,       /* opt_arguman_listesi  */
+  YYSYMBOL_arguman_listesi = 64,           /* arguman_listesi  */
+  YYSYMBOL_komut = 65,                     /* komut  */
+  YYSYMBOL_mantiksal_ifade = 66,           /* mantiksal_ifade  */
+  YYSYMBOL_aritmetik_ifade = 67,           /* aritmetik_ifade  */
+  YYSYMBOL_terim = 68,                     /* terim  */
+  YYSYMBOL_faktor = 69,                    /* faktor  */
+  YYSYMBOL_unary_ifade = 70,               /* unary_ifade  */
+  YYSYMBOL_literal = 71                    /* literal  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -289,7 +295,7 @@ typedef int yytype_uint16;
 
 
 /* Stored state numbers (used for stacks). */
-typedef yytype_int8 yy_state_t;
+typedef yytype_uint8 yy_state_t;
 
 /* State numbers in computations.  */
 typedef int yy_state_fast_t;
@@ -498,21 +504,21 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  36
+#define YYFINAL  3
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   233
+#define YYLAST   206
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  53
+#define YYNTOKENS  48
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  14
+#define YYNNTS  24
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  39
+#define YYNRULES  71
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  95
+#define YYNSTATES  149
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   300
+#define YYMAXUTOK   292
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -529,9 +535,8 @@ static const yytype_int8 yytranslate[] =
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,    50,     2,     2,
-       2,     2,    48,    46,    52,    47,     2,    49,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,    51,     2,
+       2,     2,     2,     2,     2,     2,     2,    41,     2,     2,
+      45,    46,    39,    37,    47,    38,     2,    40,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -539,6 +544,7 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,    43,     2,    44,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -555,18 +561,21 @@ static const yytype_int8 yytranslate[] =
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
-      35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
-      45
+      35,    36,    42
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_int8 yyrline[] =
+static const yytype_int16 yyrline[] =
 {
-       0,    45,    45,    49,    50,    54,    55,    56,    57,    58,
-      59,    60,    61,    65,    66,    67,    68,    73,    77,    78,
-      79,    83,    84,    85,    86,    87,    88,    89,    90,    94,
-      95,   100,   105,   110,   115,   116,   117,   122,   123,   124
+       0,    60,    60,    68,    69,    74,    76,    78,    84,    85,
+      90,    95,    97,    99,   101,   103,   105,   107,   112,   114,
+     116,   121,   126,   128,   133,   138,   144,   145,   150,   152,
+     157,   163,   164,   169,   171,   176,   178,   180,   182,   184,
+     186,   188,   190,   192,   194,   199,   201,   203,   205,   207,
+     209,   211,   213,   215,   217,   219,   224,   232,   234,   236,
+     241,   243,   245,   247,   252,   254,   259,   261,   266,   271,
+     273,   275
 };
 #endif
 
@@ -582,18 +591,19 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "\"end of file\"", "error", "\"invalid token\"", "METIN", "AKSI_HALDE",
-  "DOGRU", "YANLIS", "SON", "ISE", "IKEN", "TAMSAYI", "ONDALIK",
-  "TANIMLAYICI", "EGER", "DEGILSE", "DONGU", "NEKI", "FONK", "DONDUR",
-  "VE", "VEYA", "DEGIL", "ESIT", "ESIT_DEGIL", "KUCUK", "BUYUK",
-  "KUCUK_ESIT", "BUYUK_ESIT", "ARTI_ATAMA", "EKSI_ATAMA", "ATAMA",
-  "EKRANA_YAZ", "DEGER_GOSTER", "EKRANI_TEMIZLE", "RENK_AYARLA",
-  "KALINLIK_AYARLA", "DIKDORTGEN_CIZ", "DAIRE_CIZ", "UCGEN_CIZ", "DOLDUR",
-  "GUNCELLE", "TUS_BASILDI", "TUS_YUKARI", "TUS_ASAGI", "TUS_SOLA",
-  "TUS_SAGA", "'+'", "'-'", "'*'", "'/'", "'%'", "':'", "','", "$accept",
-  "program", "statement_list", "statement", "tus_condition",
-  "return_statement", "assignment", "expression", "condition", "loop",
-  "function_def", "function_call", "expression_list", "draw_command", YY_NULLPTR
+  "\"end of file\"", "error", "\"invalid token\"", "TAMSAYI", "ONDALIK",
+  "METIN", "TANIMLAYICI", "EGER", "DEGILSE", "IKEN", "SON", "DOGRU",
+  "YANLIS", "FONKSIYON", "DONDUR", "EKRANA_YAZ", "DEGER_GOSTER",
+  "EKRANI_TEMIZLE", "RENK_AYARLA", "KALINLIK_AYARLA", "DIKDORTGEN_CIZ",
+  "DAIRE_CIZ", "UCGEN_CIZ", "DOLDUR", "GUNCELLE", "\"←\"", "\"+←\"",
+  "\"-←\"", "\"ve\"", "\"veya\"", "\"değil\"", "\"==\"", "\"!=\"", "\"<\"",
+  "\">\"", "\"<=\"", "\">=\"", "'+'", "'-'", "'*'", "'/'", "'%'", "UMINUS",
+  "'{'", "'}'", "'('", "')'", "','", "$accept", "program", "ifadeler",
+  "ifade", "ifade_opt", "blok", "deyim", "atama_deyimi", "dongu_deyimi",
+  "kosul_deyimi", "fonksiyon_tanimi", "dondur_deyimi",
+  "opt_parametre_listesi", "parametre_listesi", "fonksiyon_cagrisi",
+  "opt_arguman_listesi", "arguman_listesi", "komut", "mantiksal_ifade",
+  "aritmetik_ifade", "terim", "faktor", "unary_ifade", "literal", YY_NULLPTR
 };
 
 static const char *
@@ -603,7 +613,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-30)
+#define YYPACT_NINF (-111)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -617,16 +627,21 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-     195,     0,    51,    -5,    -3,    -5,    -5,    -5,    -5,    13,
-     195,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,
-     -30,   -30,   -30,    -5,    -5,    -5,   -29,    -8,   -18,    -7,
-      -1,    10,   -29,     4,     4,     4,   -30,   -30,   -29,   -29,
-     -29,    -5,    -5,    -5,    -5,    -5,    -5,   -29,    25,    27,
-      30,    52,   195,   195,    58,     4,     4,     4,   -29,   -29,
-     -29,   -29,   -29,   -29,   195,   195,   195,   195,    19,   168,
-      24,     4,   -29,     4,   114,   141,   151,   158,   195,   -30,
-     195,   -29,     4,   195,   195,   195,   195,   195,   185,   -29,
-     195,   195,   195,   195,   -30
+    -111,     2,   104,  -111,  -111,  -111,  -111,   -11,   -36,   -32,
+    -111,  -111,    11,   104,     7,    15,    17,    36,    42,    44,
+      50,    55,    60,    61,   127,     1,   127,  -111,  -111,  -111,
+    -111,  -111,  -111,  -111,  -111,  -111,    63,   168,    38,  -111,
+    -111,  -111,   104,   104,   104,   104,   127,   127,    67,  -111,
+    -111,   104,   104,   104,   104,   104,   104,   104,   104,   104,
+     104,  -111,  -111,   168,  -111,   -10,   142,   127,   127,    98,
+      98,    98,    98,    98,    98,    98,    98,    98,    98,    98,
+    -111,  -111,  -111,  -111,   -24,   -16,    -8,    -3,    29,    83,
+      89,    94,    95,    99,   100,   101,   102,   105,   106,  -111,
+    -111,  -111,   116,    98,    56,    56,    56,    56,    56,    56,
+      38,    38,  -111,  -111,  -111,  -111,   104,   107,   107,  -111,
+     108,   109,  -111,  -111,  -111,  -111,  -111,  -111,  -111,  -111,
+    -111,  -111,    -9,  -111,  -111,    78,   143,   107,   149,    52,
+     107,  -111,  -111,   148,  -111,  -111,   150,  -111,  -111
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -634,123 +649,137 @@ static const yytype_int16 yypact[] =
    means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
+       3,     0,     2,     1,    69,    70,    71,    67,     0,     0,
+      55,    56,     0,     8,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     4,     5,    11,
+      12,    13,    14,    15,    17,    16,     7,     6,    59,    63,
+      64,    66,     0,     0,     0,    31,     0,     0,     0,     9,
+      25,    31,    31,    31,    31,    31,    31,    31,    31,    31,
+      31,    67,    53,     0,    68,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       2,     4,    12,    11,     5,     6,     7,     8,     9,    10,
-      21,    22,    23,     0,     0,     0,    34,    33,     0,     0,
-       0,     0,    17,     0,     0,     0,     1,     3,    19,    20,
-      18,     0,     0,     0,     0,     0,     0,    35,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,    24,    25,
-      26,    27,    28,    36,     0,     0,     0,     0,     0,     0,
-       0,     0,    37,     0,     0,     0,     0,     0,     0,    30,
-       0,    38,     0,     0,     0,     0,     0,    29,     0,    39,
-      13,    14,    15,    16,    32
+      18,    19,    20,    33,     0,    32,     0,     0,    26,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,    54,
+      65,    51,    52,     0,    45,    46,    47,    48,    49,    50,
+      57,    58,    60,    61,    62,    30,     0,     0,     0,    28,
+       0,    27,    35,    36,    37,    38,    39,    40,    41,    42,
+      43,    44,     0,    34,     3,     0,     0,     0,     0,     0,
+       0,    22,    21,     0,    29,    10,     0,    24,    23
 };
 
 /* YYPGOTO[NTERM-NUM].  */
-static const yytype_int8 yypgoto[] =
+static const yytype_int16 yypgoto[] =
 {
-     -30,   -30,    50,   -10,   -30,   -30,   -30,    66,   -30,   -30,
-     -30,   -30,   -30,   -30
+    -111,  -111,    25,    -2,  -111,  -110,  -111,  -111,  -111,  -111,
+    -111,  -111,  -111,  -111,  -111,   138,  -111,  -111,   -14,   -23,
+      23,     6,   136,  -111
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
-static const yytype_int8 yydefgoto[] =
+static const yytype_uint8 yydefgoto[] =
 {
-       0,     9,    10,    11,    12,    13,    14,    26,    15,    16,
-      17,    18,    27,    19
+       0,     1,     2,    83,    50,   135,    28,    29,    30,    31,
+      32,    33,   120,   121,    34,    84,    85,    35,    36,    37,
+      38,    39,    40,    41
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
    positive, shift that token.  If negative, reduce the rule whose
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
-static const yytype_int8 yytable[] =
+static const yytype_uint8 yytable[] =
 {
-      37,    52,    20,    21,    22,    20,    21,    22,    53,    31,
-      20,    21,    22,    36,    20,    21,    22,    41,    42,    43,
-      44,    45,    54,    78,    48,    49,    50,    51,    23,    24,
-      25,     1,     2,    64,     3,    65,     4,     5,    66,    41,
-      42,    43,    44,    45,    46,    41,    42,    43,    44,    45,
-      41,    42,    43,    44,    45,     6,     7,     8,    37,    37,
-      67,    20,    21,    22,    37,    37,    37,    37,    29,    30,
-      70,    32,    33,    34,    35,    80,     0,    37,    37,     0,
-      37,    37,    37,    37,     0,     0,     0,     0,     0,    38,
-      39,    40,    28,    47,     0,     0,     0,     0,     0,    55,
-      56,    57,    68,    69,     0,     0,     0,    58,    59,    60,
-      61,    62,    63,     0,    74,    75,    76,    77,    83,     0,
-       0,    71,    72,    73,     0,     0,     1,     2,    87,     3,
-      88,     4,     5,    90,    91,    92,    93,    81,     0,    82,
-       0,     0,     0,     0,     0,    84,     0,     0,    89,     0,
-       6,     7,     8,     1,     2,    85,     3,     0,     4,     5,
-       0,     0,    86,     1,     2,     0,     3,     0,     4,     5,
-       1,     2,     0,     3,     0,     4,     5,     6,     7,     8,
-       1,     2,     0,     3,    79,     4,     5,     6,     7,     8,
-       0,     0,    94,     0,     6,     7,     8,     1,     2,     0,
-       3,     0,     4,     5,     6,     7,     8,     1,     2,     0,
-       3,     0,     4,     5,     0,     0,     0,     0,     0,     0,
-       0,     6,     7,     8,     0,     0,     0,     0,     0,     0,
-       0,     6,     7,     8
+      27,    63,     3,    66,     4,     5,     6,    61,   136,    46,
+      62,    49,    65,    47,    42,    43,    44,    48,    67,    68,
+      67,    68,   115,    63,    63,    67,    68,   143,    75,    76,
+     146,   116,    86,    87,    45,   119,    99,   100,   117,    25,
+      80,    81,    82,   118,    63,    63,   104,   105,   106,   107,
+     108,   109,    51,   101,   102,     4,     5,     6,     7,     8,
+      52,     9,    53,    10,    11,    12,    13,    14,    15,    16,
+      17,    18,    19,    20,    21,    22,    23,    77,    78,    79,
+     132,    54,    24,   112,   113,   114,   140,    55,   141,    56,
+      25,    67,    68,    75,    76,    57,   145,    26,   110,   111,
+      58,     4,     5,     6,    61,    59,    60,     4,     5,     6,
+       7,     8,    88,     9,   133,    10,    11,    12,    13,    14,
+      15,    16,    17,    18,    19,    20,    21,    22,    23,   122,
+       4,     5,     6,    61,    24,   123,    25,    27,    10,    11,
+     124,   125,    25,   103,    67,   126,   127,   128,   129,    26,
+     134,   130,   131,   142,   137,   144,   138,    24,   147,   139,
+     148,    64,     0,     0,     0,    25,     0,     0,     0,     0,
+       0,     0,    26,    69,    70,    71,    72,    73,    74,    75,
+      76,     0,     0,     0,     0,     0,     0,     0,   100,    89,
+      90,    91,    92,    93,    94,    95,    96,    97,    98,    69,
+      70,    71,    72,    73,    74,    75,    76
 };
 
-static const yytype_int8 yycheck[] =
+static const yytype_int16 yycheck[] =
 {
-      10,     8,    10,    11,    12,    10,    11,    12,     9,    12,
-      10,    11,    12,     0,    10,    11,    12,    46,    47,    48,
-      49,    50,    12,     4,    42,    43,    44,    45,    28,    29,
-      30,    12,    13,     8,    15,     8,    17,    18,     8,    46,
-      47,    48,    49,    50,    52,    46,    47,    48,    49,    50,
-      46,    47,    48,    49,    50,    36,    37,    38,    68,    69,
-       8,    10,    11,    12,    74,    75,    76,    77,     2,     3,
-      12,     5,     6,     7,     8,    51,    -1,    87,    88,    -1,
-      90,    91,    92,    93,    -1,    -1,    -1,    -1,    -1,    23,
-      24,    25,    41,    27,    -1,    -1,    -1,    -1,    -1,    33,
-      34,    35,    52,    53,    -1,    -1,    -1,    41,    42,    43,
-      44,    45,    46,    -1,    64,    65,    66,    67,     4,    -1,
-      -1,    55,    56,    57,    -1,    -1,    12,    13,    78,    15,
-      80,    17,    18,    83,    84,    85,    86,    71,    -1,    73,
-      -1,    -1,    -1,    -1,    -1,     4,    -1,    -1,    82,    -1,
-      36,    37,    38,    12,    13,     4,    15,    -1,    17,    18,
-      -1,    -1,     4,    12,    13,    -1,    15,    -1,    17,    18,
-      12,    13,    -1,    15,    -1,    17,    18,    36,    37,    38,
-      12,    13,    -1,    15,    16,    17,    18,    36,    37,    38,
-      -1,    -1,     7,    -1,    36,    37,    38,    12,    13,    -1,
-      15,    -1,    17,    18,    36,    37,    38,    12,    13,    -1,
-      15,    -1,    17,    18,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    36,    37,    38,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    36,    37,    38
+       2,    24,     0,    26,     3,     4,     5,     6,   118,    45,
+      24,    13,    26,    45,    25,    26,    27,     6,    28,    29,
+      28,    29,    46,    46,    47,    28,    29,   137,    37,    38,
+     140,    47,    46,    47,    45,     6,    46,    46,    46,    38,
+      42,    43,    44,    46,    67,    68,    69,    70,    71,    72,
+      73,    74,    45,    67,    68,     3,     4,     5,     6,     7,
+      45,     9,    45,    11,    12,    13,    14,    15,    16,    17,
+      18,    19,    20,    21,    22,    23,    24,    39,    40,    41,
+     103,    45,    30,    77,    78,    79,     8,    45,    10,    45,
+      38,    28,    29,    37,    38,    45,    44,    45,    75,    76,
+      45,     3,     4,     5,     6,    45,    45,     3,     4,     5,
+       6,     7,    45,     9,   116,    11,    12,    13,    14,    15,
+      16,    17,    18,    19,    20,    21,    22,    23,    24,    46,
+       3,     4,     5,     6,    30,    46,    38,   139,    11,    12,
+      46,    46,    38,    45,    28,    46,    46,    46,    46,    45,
+      43,    46,    46,    10,    46,     6,    47,    30,    10,   134,
+      10,    25,    -1,    -1,    -1,    38,    -1,    -1,    -1,    -1,
+      -1,    -1,    45,    31,    32,    33,    34,    35,    36,    37,
+      38,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    46,    51,
+      52,    53,    54,    55,    56,    57,    58,    59,    60,    31,
+      32,    33,    34,    35,    36,    37,    38
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    12,    13,    15,    17,    18,    36,    37,    38,    54,
-      55,    56,    57,    58,    59,    61,    62,    63,    64,    66,
-      10,    11,    12,    28,    29,    30,    60,    65,    41,    60,
-      60,    12,    60,    60,    60,    60,     0,    56,    60,    60,
-      60,    46,    47,    48,    49,    50,    52,    60,    42,    43,
-      44,    45,     8,     9,    12,    60,    60,    60,    60,    60,
-      60,    60,    60,    60,     8,     8,     8,     8,    55,    55,
-      12,    60,    60,    60,    55,    55,    55,    55,     4,    16,
-      51,    60,    60,     4,     4,     4,     4,    55,    55,    60,
-      55,    55,    55,    55,     7
+       0,    49,    50,     0,     3,     4,     5,     6,     7,     9,
+      11,    12,    13,    14,    15,    16,    17,    18,    19,    20,
+      21,    22,    23,    24,    30,    38,    45,    51,    54,    55,
+      56,    57,    58,    59,    62,    65,    66,    67,    68,    69,
+      70,    71,    25,    26,    27,    45,    45,    45,     6,    51,
+      52,    45,    45,    45,    45,    45,    45,    45,    45,    45,
+      45,     6,    66,    67,    70,    66,    67,    28,    29,    31,
+      32,    33,    34,    35,    36,    37,    38,    39,    40,    41,
+      51,    51,    51,    51,    63,    64,    66,    66,    45,    63,
+      63,    63,    63,    63,    63,    63,    63,    63,    63,    46,
+      46,    66,    66,    45,    67,    67,    67,    67,    67,    67,
+      68,    68,    69,    69,    69,    46,    47,    46,    46,     6,
+      60,    61,    46,    46,    46,    46,    46,    46,    46,    46,
+      46,    46,    67,    51,    43,    53,    53,    46,    47,    50,
+       8,    10,    10,    53,     6,    44,    53,    10,    10
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    53,    54,    55,    55,    56,    56,    56,    56,    56,
-      56,    56,    56,    57,    57,    57,    57,    58,    59,    59,
-      59,    60,    60,    60,    60,    60,    60,    60,    60,    61,
-      61,    62,    63,    64,    65,    65,    65,    66,    66,    66
+       0,    48,    49,    50,    50,    51,    51,    51,    52,    52,
+      53,    54,    54,    54,    54,    54,    54,    54,    55,    55,
+      55,    56,    57,    57,    58,    59,    60,    60,    61,    61,
+      62,    63,    63,    64,    64,    65,    65,    65,    65,    65,
+      65,    65,    65,    65,    65,    66,    66,    66,    66,    66,
+      66,    66,    66,    66,    66,    66,    66,    67,    67,    67,
+      68,    68,    68,    68,    69,    69,    70,    70,    70,    71,
+      71,    71
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     1,     2,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     7,     7,     7,     7,     2,     3,     3,
-       3,     1,     1,     1,     3,     3,     3,     3,     3,     6,
-       5,     5,     7,     2,     1,     2,     3,     4,     5,     6
+       0,     2,     1,     0,     2,     1,     1,     1,     0,     1,
+       3,     1,     1,     1,     1,     1,     1,     1,     3,     3,
+       3,     6,     6,     8,     7,     2,     0,     1,     1,     3,
+       4,     0,     1,     1,     3,     4,     4,     4,     4,     4,
+       4,     4,     4,     4,     4,     3,     3,     3,     3,     3,
+       3,     3,     3,     2,     3,     1,     1,     3,     3,     1,
+       3,     3,     3,     1,     1,     3,     1,     1,     2,     1,
+       1,     1
 };
 
 
@@ -1213,62 +1242,439 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-  case 17: /* return_statement: DONDUR expression  */
-#line 73 "parser.y"
-                         { printf("Return edildi.\n"); }
-#line 1220 "parser.tab.c"
+  case 2: /* program: ifadeler  */
+#line 61 "parser.y"
+        { 
+            (yyval.dummy) = 0; // Sadece gramer denetimi yapacağız, AST üretmeyeceğiz
+        }
+#line 1251 "parser.tab.c"
     break;
 
-  case 18: /* assignment: TANIMLAYICI ATAMA expression  */
+  case 3: /* ifadeler: %empty  */
+#line 68 "parser.y"
+        { (yyval.dummy) = 0; }
+#line 1257 "parser.tab.c"
+    break;
+
+  case 4: /* ifadeler: ifadeler ifade  */
+#line 70 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1263 "parser.tab.c"
+    break;
+
+  case 5: /* ifade: deyim  */
+#line 75 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1269 "parser.tab.c"
+    break;
+
+  case 6: /* ifade: aritmetik_ifade  */
 #line 77 "parser.y"
-                                                { printf("%s değişkenine değer atandı.\n", (yyvsp[-2].identifier)); }
-#line 1226 "parser.tab.c"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1275 "parser.tab.c"
     break;
 
-  case 19: /* assignment: TANIMLAYICI ARTI_ATAMA expression  */
-#line 78 "parser.y"
-                                                { printf("%s değişkeni artırıldı.\n", (yyvsp[-2].identifier)); }
-#line 1232 "parser.tab.c"
-    break;
-
-  case 20: /* assignment: TANIMLAYICI EKSI_ATAMA expression  */
+  case 7: /* ifade: mantiksal_ifade  */
 #line 79 "parser.y"
-                                                { printf("%s değişkeni azaltıldı.\n", (yyvsp[-2].identifier)); }
-#line 1238 "parser.tab.c"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1281 "parser.tab.c"
     break;
 
-  case 32: /* function_def: FONK TANIMLAYICI TANIMLAYICI TANIMLAYICI ':' statement_list SON  */
-#line 105 "parser.y"
-                                                                     { printf("Fonksiyon tanımlandı: %s\n", (yyvsp[-5].identifier)); }
-#line 1244 "parser.tab.c"
+  case 8: /* ifade_opt: %empty  */
+#line 84 "parser.y"
+        { (yyval.dummy) = 0; }
+#line 1287 "parser.tab.c"
     break;
 
-  case 33: /* function_call: TANIMLAYICI expression_list  */
-#line 110 "parser.y"
-                                       { printf("Fonksiyon çağrısı yapıldı.\n"); }
-#line 1250 "parser.tab.c"
+  case 9: /* ifade_opt: ifade  */
+#line 86 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1293 "parser.tab.c"
     break;
 
-  case 37: /* draw_command: DAIRE_CIZ expression expression expression  */
+  case 10: /* blok: '{' ifadeler '}'  */
+#line 91 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1299 "parser.tab.c"
+    break;
+
+  case 11: /* deyim: atama_deyimi  */
+#line 96 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1305 "parser.tab.c"
+    break;
+
+  case 12: /* deyim: dongu_deyimi  */
+#line 98 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1311 "parser.tab.c"
+    break;
+
+  case 13: /* deyim: kosul_deyimi  */
+#line 100 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1317 "parser.tab.c"
+    break;
+
+  case 14: /* deyim: fonksiyon_tanimi  */
+#line 102 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1323 "parser.tab.c"
+    break;
+
+  case 15: /* deyim: dondur_deyimi  */
+#line 104 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1329 "parser.tab.c"
+    break;
+
+  case 16: /* deyim: komut  */
+#line 106 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1335 "parser.tab.c"
+    break;
+
+  case 17: /* deyim: fonksiyon_cagrisi  */
+#line 108 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1341 "parser.tab.c"
+    break;
+
+  case 18: /* atama_deyimi: TANIMLAYICI "←" ifade  */
+#line 113 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1347 "parser.tab.c"
+    break;
+
+  case 19: /* atama_deyimi: TANIMLAYICI "+←" ifade  */
+#line 115 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1353 "parser.tab.c"
+    break;
+
+  case 20: /* atama_deyimi: TANIMLAYICI "-←" ifade  */
+#line 117 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1359 "parser.tab.c"
+    break;
+
+  case 21: /* dongu_deyimi: IKEN '(' mantiksal_ifade ')' blok SON  */
 #line 122 "parser.y"
-                                                { printf("Daire çizildi.\n"); }
-#line 1256 "parser.tab.c"
+        { (yyval.dummy) = (yyvsp[-3].dummy); }
+#line 1365 "parser.tab.c"
     break;
 
-  case 38: /* draw_command: DIKDORTGEN_CIZ expression expression expression expression  */
-#line 123 "parser.y"
-                                                                  { printf("Dikdörtgen çizildi.\n"); }
-#line 1262 "parser.tab.c"
+  case 22: /* kosul_deyimi: EGER '(' mantiksal_ifade ')' blok SON  */
+#line 127 "parser.y"
+        { (yyval.dummy) = (yyvsp[-3].dummy); }
+#line 1371 "parser.tab.c"
     break;
 
-  case 39: /* draw_command: UCGEN_CIZ expression expression expression expression expression  */
-#line 124 "parser.y"
-                                                                        { printf("Üçgen çizildi.\n"); }
-#line 1268 "parser.tab.c"
+  case 23: /* kosul_deyimi: EGER '(' mantiksal_ifade ')' blok DEGILSE blok SON  */
+#line 129 "parser.y"
+        { (yyval.dummy) = (yyvsp[-5].dummy); }
+#line 1377 "parser.tab.c"
+    break;
+
+  case 24: /* fonksiyon_tanimi: FONKSIYON TANIMLAYICI '(' opt_parametre_listesi ')' blok SON  */
+#line 134 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1383 "parser.tab.c"
+    break;
+
+  case 25: /* dondur_deyimi: DONDUR ifade_opt  */
+#line 139 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1389 "parser.tab.c"
+    break;
+
+  case 26: /* opt_parametre_listesi: %empty  */
+#line 144 "parser.y"
+        { (yyval.dummy) = 0; }
+#line 1395 "parser.tab.c"
+    break;
+
+  case 27: /* opt_parametre_listesi: parametre_listesi  */
+#line 146 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1401 "parser.tab.c"
+    break;
+
+  case 28: /* parametre_listesi: TANIMLAYICI  */
+#line 151 "parser.y"
+        { (yyval.dummy) = 0; }
+#line 1407 "parser.tab.c"
+    break;
+
+  case 29: /* parametre_listesi: parametre_listesi ',' TANIMLAYICI  */
+#line 153 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1413 "parser.tab.c"
+    break;
+
+  case 30: /* fonksiyon_cagrisi: TANIMLAYICI '(' opt_arguman_listesi ')'  */
+#line 158 "parser.y"
+        { (yyval.dummy) = 0; }
+#line 1419 "parser.tab.c"
+    break;
+
+  case 31: /* opt_arguman_listesi: %empty  */
+#line 163 "parser.y"
+        { (yyval.dummy) = 0; }
+#line 1425 "parser.tab.c"
+    break;
+
+  case 32: /* opt_arguman_listesi: arguman_listesi  */
+#line 165 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1431 "parser.tab.c"
+    break;
+
+  case 33: /* arguman_listesi: ifade  */
+#line 170 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1437 "parser.tab.c"
+    break;
+
+  case 34: /* arguman_listesi: arguman_listesi ',' ifade  */
+#line 172 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1443 "parser.tab.c"
+    break;
+
+  case 35: /* komut: EKRANA_YAZ '(' opt_arguman_listesi ')'  */
+#line 177 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1449 "parser.tab.c"
+    break;
+
+  case 36: /* komut: DEGER_GOSTER '(' opt_arguman_listesi ')'  */
+#line 179 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1455 "parser.tab.c"
+    break;
+
+  case 37: /* komut: EKRANI_TEMIZLE '(' opt_arguman_listesi ')'  */
+#line 181 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1461 "parser.tab.c"
+    break;
+
+  case 38: /* komut: RENK_AYARLA '(' opt_arguman_listesi ')'  */
+#line 183 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1467 "parser.tab.c"
+    break;
+
+  case 39: /* komut: KALINLIK_AYARLA '(' opt_arguman_listesi ')'  */
+#line 185 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1473 "parser.tab.c"
+    break;
+
+  case 40: /* komut: DIKDORTGEN_CIZ '(' opt_arguman_listesi ')'  */
+#line 187 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1479 "parser.tab.c"
+    break;
+
+  case 41: /* komut: DAIRE_CIZ '(' opt_arguman_listesi ')'  */
+#line 189 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1485 "parser.tab.c"
+    break;
+
+  case 42: /* komut: UCGEN_CIZ '(' opt_arguman_listesi ')'  */
+#line 191 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1491 "parser.tab.c"
+    break;
+
+  case 43: /* komut: DOLDUR '(' opt_arguman_listesi ')'  */
+#line 193 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1497 "parser.tab.c"
+    break;
+
+  case 44: /* komut: GUNCELLE '(' opt_arguman_listesi ')'  */
+#line 195 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1503 "parser.tab.c"
+    break;
+
+  case 45: /* mantiksal_ifade: aritmetik_ifade "==" aritmetik_ifade  */
+#line 200 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1509 "parser.tab.c"
+    break;
+
+  case 46: /* mantiksal_ifade: aritmetik_ifade "!=" aritmetik_ifade  */
+#line 202 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1515 "parser.tab.c"
+    break;
+
+  case 47: /* mantiksal_ifade: aritmetik_ifade "<" aritmetik_ifade  */
+#line 204 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1521 "parser.tab.c"
+    break;
+
+  case 48: /* mantiksal_ifade: aritmetik_ifade ">" aritmetik_ifade  */
+#line 206 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1527 "parser.tab.c"
+    break;
+
+  case 49: /* mantiksal_ifade: aritmetik_ifade "<=" aritmetik_ifade  */
+#line 208 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1533 "parser.tab.c"
+    break;
+
+  case 50: /* mantiksal_ifade: aritmetik_ifade ">=" aritmetik_ifade  */
+#line 210 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1539 "parser.tab.c"
+    break;
+
+  case 51: /* mantiksal_ifade: mantiksal_ifade "ve" mantiksal_ifade  */
+#line 212 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1545 "parser.tab.c"
+    break;
+
+  case 52: /* mantiksal_ifade: mantiksal_ifade "veya" mantiksal_ifade  */
+#line 214 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1551 "parser.tab.c"
+    break;
+
+  case 53: /* mantiksal_ifade: "değil" mantiksal_ifade  */
+#line 216 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1557 "parser.tab.c"
+    break;
+
+  case 54: /* mantiksal_ifade: '(' mantiksal_ifade ')'  */
+#line 218 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1563 "parser.tab.c"
+    break;
+
+  case 55: /* mantiksal_ifade: DOGRU  */
+#line 220 "parser.y"
+        { 
+          /* Create a boolean constant node */
+          (yyval.dummy) = 1; /* In a real implementation, you would create an AST node here */
+        }
+#line 1572 "parser.tab.c"
+    break;
+
+  case 56: /* mantiksal_ifade: YANLIS  */
+#line 225 "parser.y"
+        { 
+          /* Create a boolean constant node */
+          (yyval.dummy) = 0; /* In a real implementation, you would create an AST node here */
+        }
+#line 1581 "parser.tab.c"
+    break;
+
+  case 57: /* aritmetik_ifade: aritmetik_ifade '+' terim  */
+#line 233 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1587 "parser.tab.c"
+    break;
+
+  case 58: /* aritmetik_ifade: aritmetik_ifade '-' terim  */
+#line 235 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1593 "parser.tab.c"
+    break;
+
+  case 59: /* aritmetik_ifade: terim  */
+#line 237 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1599 "parser.tab.c"
+    break;
+
+  case 60: /* terim: terim '*' faktor  */
+#line 242 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1605 "parser.tab.c"
+    break;
+
+  case 61: /* terim: terim '/' faktor  */
+#line 244 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1611 "parser.tab.c"
+    break;
+
+  case 62: /* terim: terim '%' faktor  */
+#line 246 "parser.y"
+        { (yyval.dummy) = (yyvsp[-2].dummy); }
+#line 1617 "parser.tab.c"
+    break;
+
+  case 63: /* terim: faktor  */
+#line 248 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1623 "parser.tab.c"
+    break;
+
+  case 64: /* faktor: unary_ifade  */
+#line 253 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1629 "parser.tab.c"
+    break;
+
+  case 65: /* faktor: '(' aritmetik_ifade ')'  */
+#line 255 "parser.y"
+        { (yyval.dummy) = (yyvsp[-1].dummy); }
+#line 1635 "parser.tab.c"
+    break;
+
+  case 66: /* unary_ifade: literal  */
+#line 260 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1641 "parser.tab.c"
+    break;
+
+  case 67: /* unary_ifade: TANIMLAYICI  */
+#line 262 "parser.y"
+        {
+          /* Create identifier node */
+          (yyval.dummy) = 0; /* In a real implementation, you would create an AST node here */
+        }
+#line 1650 "parser.tab.c"
+    break;
+
+  case 68: /* unary_ifade: '-' unary_ifade  */
+#line 267 "parser.y"
+        { (yyval.dummy) = (yyvsp[0].dummy); }
+#line 1656 "parser.tab.c"
+    break;
+
+  case 69: /* literal: TAMSAYI  */
+#line 272 "parser.y"
+        { (yyval.dummy) = 0; }
+#line 1662 "parser.tab.c"
+    break;
+
+  case 70: /* literal: ONDALIK  */
+#line 274 "parser.y"
+        { (yyval.dummy) = 0; }
+#line 1668 "parser.tab.c"
+    break;
+
+  case 71: /* literal: METIN  */
+#line 276 "parser.y"
+        { (yyval.dummy) = 0; }
+#line 1674 "parser.tab.c"
     break;
 
 
-#line 1272 "parser.tab.c"
+#line 1678 "parser.tab.c"
 
       default: break;
     }
@@ -1461,33 +1867,30 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 126 "parser.y"
+#line 279 "parser.y"
 
 
-
-void yyerror(const char *s) {
-    fprintf(stderr, "Hata: %s\n", s);
+void yyerror(const char* s) {
+    fprintf(stderr, "Hata: Satır %d: %s\n", line_num, s);
 }
 
-
-int main(int argc, char **argv) {
-    if (argc > 1) {
-        yyin = fopen(argv[1], "r");
-        if (!yyin) {
-            perror("Dosya açılamadı");
-            return 1;
-        }
-    } else {
-        printf("Kullanım: %s <dosya>\n", argv[0]);
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Kullanım: %s <dosya>\n", argv[0]);
         return 1;
     }
 
-    if (yyparse() == 0) {
-        printf("Program başarılı bir şekilde çalıştı.\n");
-    } else {
-        printf("Programda hata bulundu.\n");
+    FILE* input = fopen(argv[1], "r");
+    if (!input) {
+        fprintf(stderr, "Dosya açılamadı: %s\n", argv[1]);
+        return 1;
     }
 
-    fclose(yyin);
+    yyin = input;
+    if (yyparse() == 0) {
+        printf("[Başarılı] Kod gramer kurallarına uygundur.\n");
+    }
+
+    fclose(input);
     return 0;
 }
