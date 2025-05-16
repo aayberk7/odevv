@@ -1,4 +1,4 @@
-fonk oyuncu_cizdir x y
+fonk oyuncu_cizdir x y:
 daire_ciz x y 5
-knof
+son
 oyuncu_cizdir 10 10

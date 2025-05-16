@@ -54,41 +54,49 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    TAMSAYI = 258,                 /* TAMSAYI  */
-    ONDALIK = 259,                 /* ONDALIK  */
-    METIN = 260,                   /* METIN  */
-    TANIMLAYICI = 261,             /* TANIMLAYICI  */
-    EGER = 262,                    /* EGER  */
-    DEGILSE = 263,                 /* DEGILSE  */
+    METIN = 258,                   /* METIN  */
+    AKSI_HALDE = 259,              /* AKSI_HALDE  */
+    DOGRU = 260,                   /* DOGRU  */
+    YANLIS = 261,                  /* YANLIS  */
+    SON = 262,                     /* SON  */
+    ISE = 263,                     /* ISE  */
     IKEN = 264,                    /* IKEN  */
-    SON = 265,                     /* SON  */
-    DOGRU = 266,                   /* DOGRU  */
-    YANLIS = 267,                  /* YANLIS  */
-    FONKSIYON = 268,               /* FONKSIYON  */
-    DONDUR = 269,                  /* DONDUR  */
-    EKRANA_YAZ = 270,              /* EKRANA_YAZ  */
-    DEGER_GOSTER = 271,            /* DEGER_GOSTER  */
-    EKRANI_TEMIZLE = 272,          /* EKRANI_TEMIZLE  */
-    RENK_AYARLA = 273,             /* RENK_AYARLA  */
-    KALINLIK_AYARLA = 274,         /* KALINLIK_AYARLA  */
-    DIKDORTGEN_CIZ = 275,          /* DIKDORTGEN_CIZ  */
-    DAIRE_CIZ = 276,               /* DAIRE_CIZ  */
-    UCGEN_CIZ = 277,               /* UCGEN_CIZ  */
-    DOLDUR = 278,                  /* DOLDUR  */
-    GUNCELLE = 279,                /* GUNCELLE  */
-    ATAMA = 280,                   /* "←"  */
-    ARTI_ATAMA = 281,              /* "+←"  */
-    EKSI_ATAMA = 282,              /* "-←"  */
-    VE = 283,                      /* "ve"  */
-    VEYA = 284,                    /* "veya"  */
-    DEGIL = 285,                   /* "değil"  */
-    ESIT = 286,                    /* "=="  */
-    ESIT_DEGIL = 287,              /* "!="  */
-    KUCUK = 288,                   /* "<"  */
-    BUYUK = 289,                   /* ">"  */
-    KUCUK_ESIT = 290,              /* "<="  */
-    BUYUK_ESIT = 291,              /* ">="  */
-    UMINUS = 292                   /* UMINUS  */
+    TAMSAYI = 265,                 /* TAMSAYI  */
+    ONDALIK = 266,                 /* ONDALIK  */
+    TANIMLAYICI = 267,             /* TANIMLAYICI  */
+    EGER = 268,                    /* EGER  */
+    DEGILSE = 269,                 /* DEGILSE  */
+    DONGU = 270,                   /* DONGU  */
+    NEKI = 271,                    /* NEKI  */
+    FONK = 272,                    /* FONK  */
+    DONDUR = 273,                  /* DONDUR  */
+    VE = 274,                      /* VE  */
+    VEYA = 275,                    /* VEYA  */
+    DEGIL = 276,                   /* DEGIL  */
+    ESIT = 277,                    /* ESIT  */
+    ESIT_DEGIL = 278,              /* ESIT_DEGIL  */
+    KUCUK = 279,                   /* KUCUK  */
+    BUYUK = 280,                   /* BUYUK  */
+    KUCUK_ESIT = 281,              /* KUCUK_ESIT  */
+    BUYUK_ESIT = 282,              /* BUYUK_ESIT  */
+    ARTI_ATAMA = 283,              /* ARTI_ATAMA  */
+    EKSI_ATAMA = 284,              /* EKSI_ATAMA  */
+    ATAMA = 285,                   /* ATAMA  */
+    EKRANA_YAZ = 286,              /* EKRANA_YAZ  */
+    DEGER_GOSTER = 287,            /* DEGER_GOSTER  */
+    EKRANI_TEMIZLE = 288,          /* EKRANI_TEMIZLE  */
+    RENK_AYARLA = 289,             /* RENK_AYARLA  */
+    KALINLIK_AYARLA = 290,         /* KALINLIK_AYARLA  */
+    DIKDORTGEN_CIZ = 291,          /* DIKDORTGEN_CIZ  */
+    DAIRE_CIZ = 292,               /* DAIRE_CIZ  */
+    UCGEN_CIZ = 293,               /* UCGEN_CIZ  */
+    DOLDUR = 294,                  /* DOLDUR  */
+    GUNCELLE = 295,                /* GUNCELLE  */
+    TUS_BASILDI = 296,             /* TUS_BASILDI  */
+    TUS_YUKARI = 297,              /* TUS_YUKARI  */
+    TUS_ASAGI = 298,               /* TUS_ASAGI  */
+    TUS_SOLA = 299,                /* TUS_SOLA  */
+    TUS_SAGA = 300                 /* TUS_SAGA  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -97,15 +105,14 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 14 "src/parser.y"
+#line 12 "parser.y"
 
     int int_value;
     double double_value;
-    char* string_value;
-    char* identifier;
-    int dummy;  /* Sadece sentaks analizi yapmak için kullanılacak */
+    char *string_value;
+    char *identifier;
 
-#line 109 "parser.tab.h"
+#line 116 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

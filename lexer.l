@@ -60,13 +60,24 @@ TANIMLAYICI      [a-zA-Z_][a-zA-Z0-9_]*
                         free(yylval.string_value);
                         yylval.string_value = yeni_metin; }
 
+"aksi halde"          { return AKSI_HALDE; }
+"tus_basildi"         { return TUS_BASILDI; }
+"TUS_YUKARI"          { return TUS_YUKARI; }
+"TUS_ASAGI"           { return TUS_ASAGI; }
+"TUS_SOLA"            { return TUS_SOLA; }
+"TUS_SAGA"            { return TUS_SAGA; }
+"<>"                  { return ESIT_DEGIL; }
+"ise"                 { return ISE; }
+"iken"                { return IKEN; }
+":"                   { return ':'; }
 "eger"                { return EGER; }
 "degilse"             { return DEGILSE; }
-"iken"                { return IKEN; }
-"son"                 { return SON; }
+"dongu"               { return DONGU; }
+"neki"                { return NEKI; }
 "dogru"               { yylval.int_value = 1; return DOGRU; }
 "yanlis"              { yylval.int_value = 0; return YANLIS; }
-"fonksiyon"           { return FONKSIYON; }
+"fonk"                { return FONK; }
+"son"                 { return SON;}
 "dondur"              { return DONDUR; }
 
 "ve"                  { return VE; }
@@ -84,9 +95,9 @@ TANIMLAYICI      [a-zA-Z_][a-zA-Z0-9_]*
 "doldur"              { return DOLDUR; }
 "guncelle"            { return GUNCELLE; }
 
-"←"                   { return ATAMA; }
-"+←"                  { return ARTI_ATAMA; }
-"-←"                  { return EKSI_ATAMA; }
+"<-"                   { return ATAMA; }
+"+<-"                  { return ARTI_ATAMA; }
+"-<-"                  { return EKSI_ATAMA; }
 
 "+"                   { return '+'; }
 "-"                   { return '-'; }
